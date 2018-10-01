@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { Redirect } from 'react-router-dom'
 import App from './App'
 
  
@@ -13,14 +14,6 @@ export default class SignUpForm extends Component{
         };
     }
 
-    // handleSignUp(){
-    //     this.setState({errorMessage:null});
-    //     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-    //     .catch((err) => {
-    //         console.log(err)
-    //         this.setState({errorMessage: err.message})
-    //     })
-    // }
 
     handleChange(event){
         let field = event.target.name;
@@ -28,29 +21,29 @@ export default class SignUpForm extends Component{
 
         let changes = {};
         changes[field] = value;
-        this.setState(changes);
+        this.setState(changes); 
     }
 
     render(){
 
-        let userMessage= null;
-        // if(){
-        //     console.log('hi')
-        //     userMessage = <div className="alert alert-success"> <h3>Logged in as: {firebase.auth().currentUser}</h3></div>;
-        // }
+        let userMessage = null;
+        if(this.props.currentUser) {
+          userMessage = <div className="alert alert-success"><h3>Currently logged in as {this.props.currentUser.email}</h3><small>Go to Settings to modify your account preferences</small></div>;
+        }
 
-        console.log(this.state);
+
 
         return(
 
         <div className="container">
             <h1> Sign Up </h1>
 
+            <div>{userMessage}</div>
+
             {this.props.errorMessage && 
                 <p className="alert alert-danger"> {this.props.errorMessage}</p>}
 
-            {userMessage}
-
+            
             <div className='form-group'>
                 <label>Enter Email Address: </label>
                 <input className="form-control" name="email" type= "text" value={this.state.email} onChange={(event) => {this.handleChange(event)}}/>
@@ -67,10 +60,7 @@ export default class SignUpForm extends Component{
                 <button className="btn btn-primary mr-2" onClick={() => this.props.howToSignUp(this.state.email, this.state.password)}> Create Account </button> 
             </div>
         </div>
-        
-
-        
-        
+         
         );
     }
 }

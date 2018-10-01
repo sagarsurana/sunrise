@@ -5,8 +5,8 @@ import App from './App'
 
 
 
+
 export default class AuthContainer extends Component{
-    //state to track current user
     constructor(props){
         super(props);
         this.state = {
@@ -47,6 +47,8 @@ export default class AuthContainer extends Component{
             console.log(err)
             this.setState({signUpErrorMessage: err.message})
         })
+
+        
     }
 
     handleSignIn(email, password){

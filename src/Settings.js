@@ -12,21 +12,15 @@ export default class SettingsForm extends Component {
             primaryWeatherLocation: '',
             secondaryWeatherLocation: '',
             thirdWeatherLocation: '',
-            newsSites: []
+            newsSites: undefined
         }
     }
 
 
     handleSubmit() {
 
-        console.log(this.state.newUsername);
-        console.log(this.state.primaryWeatherLocation);
-        console.log(this.state.secondaryWeatherLocation);
-        console.log(this.state.newsSites);
-
-
         let currentUser = this.props.currentUser;
-        console.log(currentUser)
+
 
         if(this.state.newUsername){
             currentUser.updateProfile({displayName: this.state.username})
@@ -34,14 +28,37 @@ export default class SettingsForm extends Component {
 
         
         let userPrefRef = firebase.database().ref('UserPrefs').child(currentUser.uid)
+        
+        
+        let updatedInfo={}  ///checks if settings have been overwritten, if not keeps previous settings
 
-        userPrefRef.update({
-            username: this.state.newUsername,
-            primaryWeatherLocation: this.state.primaryWeatherLocation,
-            secondaryWeatherLocation: this.state.secondaryWeatherLocation,
-            thirdWeatherLocation: this.state.thirdWeatherLocation,
-            newsSites: this.state.newsSites
-        })
+        if(this.state.username != ''){
+           updatedInfo.username = this.state.newUsername
+        }
+
+        if(this.state.primaryWeatherLocation != ''){
+            updatedInfo.primaryWeatherLocation = this.state.primaryWeatherLocation
+        }
+        if(this.state.secondaryWeatherLocation != ''){
+            updatedInfo.secondaryWeatherLocation = this.state.secondaryWeatherLocation
+        }
+        if(this.state.thirdWeatherLocation != ''){
+            updatedInfo.thirdWeatherLocation = this.state.thirdWeatherLocation
+        }
+        if(this.state.newsSites != undefined){
+            updatedInfo.newsSites = this.state.newsSites
+        }
+        
+        
+        userPrefRef.update(
+
+            updatedInfo
+            // username: this.state.newUsername,
+            // primaryWeatherLocation: this.state.primaryWeatherLocation,
+            // secondaryWeatherLocation: this.state.secondaryWeatherLocation,
+            // thirdWeatherLocation: this.state.thirdWeatherLocation,
+            // newsSites: this.state.newsSites
+        )
     }
 
 
@@ -56,7 +73,6 @@ export default class SettingsForm extends Component {
 
     newsSourcesChanged(newValues){
 
-        console.log(newValues)
         this.setState({newsSites: newValues})
     }
 
@@ -75,17 +91,17 @@ export default class SettingsForm extends Component {
                 <div className='form-group'>
                     <h2> Weather Settings </h2>
                     <div><small>Format location using city name and full country name. (Example: Seattle, United States) </small></div>
-                    <label>Set Primary Weather Location:</label>
+                    <label>Set Primary Weather Location (Required):</label>
                     <input className="form-control" name="primaryWeatherLocation" value={this.state.primaryWeatherLocation} onChange={(event) => { this.handleChange(event) }} />
                 </div>
 
                 <div className='form-group'>
-                    <label>Set Secondary Weather Location (optional):</label>
+                    <label>Set Secondary Weather Location (Required):</label>
                     <input className="form-control" name="secondaryWeatherLocation" value={this.state.secondaryWeatherLocation} onChange={(event) => { this.handleChange(event) }} />
                 </div>
 
                 <div className='form-group'>
-                    <label>Set Third Weather Location (optional):</label>
+                    <label>Set Third Weather Location (Required):</label>
                     <input className="form-control" name="thirdWeatherLocation" value={this.state.thirdWeatherLocation} onChange={(event) => { this.handleChange(event) }} />
                 </div>
 

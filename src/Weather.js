@@ -7,7 +7,7 @@ import {
 } from 'reactstrap';
 import codesFile from './countrycodes.json';
 
-const URL = "http://api.openweathermap.org/data/2.5/weather?q=";
+const URL = "https://api.openweathermap.org/data/2.5/weather?q=";
 const ULR2 = "&appid=142b0b25be4201d070b187e4b67d1df4&units=imperial";
 
 class Weather extends Component {
