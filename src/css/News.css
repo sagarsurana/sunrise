@@ -1,0 +1,44 @@
+/* #root{
+    background-color: none;
+} */
+
+.news .card-group {
+    display: flex;
+}
+
+.news .card{
+    background-color: rgba(186, 178, 181, 0.285);
+    border: none;
+    margin: 2px;
+}
+
+.news .card small{
+    color: #123C69;
+}
+
+
+.news .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    background-color:#AC3B61;
+}
+
+.news .card:hover a{
+    color: white;
+}
+
+.news a{
+    color: rgb(28, 27, 27);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.news .card-title{
+    font-size: 14px;
+    
+}
+.news .card-subtitle {
+    /* color: rgb(75, 73, 73); */
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+    font-size: 12px;
+
+}

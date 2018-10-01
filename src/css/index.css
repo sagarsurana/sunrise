@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Sans', 'Roboto', sans-serif;
+  background-image: url('../img/cleanBlue.jpg')
+}
+
+.title{
+  font-family: 'Pacifico', 'Merienda One', cursive;
+  /* color: #AC3B61; */
+  /* color: whitesmoke; */
+  color: rgba(172, 59, 97, 0.842);
+
+  font-size: 80px;
+  -webkit-text-stroke-width: 0.45px;
+  -webkit-text-stroke-color: black;
+}

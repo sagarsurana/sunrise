@@ -1,0 +1,38 @@
+.mainweather, .otherweather {
+    margin: 4rem;
+}
+
+.otherweatheritem {
+    margin: 0;
+    width: 50%;
+}
+
+.mainweather {
+    /*background:linear-gradient(0deg,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("./img/background.png"); */
+    background-image: url("../img/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card-title, .card-text, .card-subtitle {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.card-title {
+    font-size: 2rem;
+    color: lightseagreen;
+}
+
+.card-text {
+    color:white;
+}
+
+.card-subtitle, .othercountry {
+    color: cadetblue;
+}
+
+.temp {
+    color: lightseagreen;
+    font-size: 1.5rem;
+}
+

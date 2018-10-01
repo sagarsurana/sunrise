@@ -1,0 +1,43 @@
+.dt{
+    text-align: center;
+    font-size: 100px;
+    color: #123C69;
+    margin: auto;
+}
+
+.t {
+    text-align: center;
+    font-size: 85px;
+    color: rgba(18, 60, 105, 0.9);
+    margin: auto;
+}
+
+.dtt{
+    width: 100%;
+    margin: 10px;
+}
+
+.nb{
+    margin-left: 10px;
+    width: 100%;
+}
+
+.n{
+    text-align: center;
+    font-size: 70px;
+    color: rgba(172, 59, 97, 0.842);
+}
+
+.text{
+    font-size: 25px;
+    color: rgba(0, 0, 0, 0.693);
+}
+
+footer{
+    /* position: relative; */
+    margin-top: 50px;;
+}
+
+small {
+    text-align: center;
+}
